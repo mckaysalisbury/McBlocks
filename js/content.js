@@ -7,12 +7,14 @@ var content = [
         header: "Wikipedia",
         image: "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
         href: "https://en.wikipedia.org/",
-        id: "wp"
+        id: "wp",
+        alt: "The Wikipedia logo"
     }, 
     {
         header: "big art",
         image: "images/UntitledDeluxe.png",
-        color: "lime"
+        color: "lime",
+        alt: "the pinnacle of art"
     }, 
     {
         header: "This is a long message. So long that it doesn't fit",

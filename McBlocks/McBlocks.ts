@@ -22,18 +22,32 @@
 
 ///<reference path="../jquery/jquery.d.ts" />
 
+interface IMcBlock {
+    id? : string;
+    header: string;
+    image?: string;
+    contentText?: string;
+    href?: string;
+    color?: string;
+    alt?: string;
+}
+
 class McBlocks {
+    
+    // Use this method    
+    static Add(jquerySelector: string, content: IMcBlock[]) {
+        $(document).ready(function() {
+            content.map(McBlocks.addFunc(jquerySelector));
+        });
+    }
+    
+    // Private methods
+
     private static addFunc(selector: string) {
         var selected = $(selector);
         return function(mcBlock: IMcBlock) {
             selected.append(McBlocks.createDom(mcBlock));
         };
-    }
-
-    static Add(jquerySelector: string, content: IMcBlock[]) {
-        $(document).ready(function() {
-            content.map(McBlocks.addFunc(jquerySelector));
-        });
     }
 
     private static createDom(mcBlock: IMcBlock): JQuery {
@@ -43,7 +57,7 @@ class McBlocks {
         
         var href = mcBlock.href;
         if (mcBlock.image != undefined) {
-            var imageDiv = $("<img />", { src: mcBlock.image });
+            var imageDiv = $("<img />", { src: mcBlock.image, alt: mcBlock.alt });
             imageDiv.addClass("blockContentImage");
             if (href == undefined) {
                 href = mcBlock.image;
@@ -76,13 +90,4 @@ class McBlocks {
         }
         return outerBlock;
     }
-}
-
-interface IMcBlock {
-    id? : string;
-    header: string;
-    image?: string;
-    contentText?: string;
-    href?: string;
-    color?: string;
 }

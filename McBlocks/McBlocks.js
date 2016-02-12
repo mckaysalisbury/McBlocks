@@ -22,16 +22,16 @@
 
 var McBlocks = (function () {
     function McBlocks() { }
+    McBlocks.Add = function Add(jquerySelector, content) {
+        $(document).ready(function () {
+            content.map(McBlocks.addFunc(jquerySelector));
+        });
+    };
     McBlocks.addFunc = function addFunc(selector) {
         var selected = $(selector);
         return function (mcBlock) {
             selected.append(McBlocks.createDom(mcBlock));
         };
-    };
-    McBlocks.Add = function Add(jquerySelector, content) {
-        $(document).ready(function () {
-            content.map(McBlocks.addFunc(jquerySelector));
-        });
     };
     McBlocks.createDom = function createDom(mcBlock) {
         var headerDiv = $("<div/>", {
@@ -42,7 +42,8 @@ var McBlocks = (function () {
         var href = mcBlock.href;
         if(mcBlock.image != undefined) {
             var imageDiv = $("<img />", {
-                src: mcBlock.image
+                src: mcBlock.image,
+                alt: mcBlock.alt
             });
             imageDiv.addClass("blockContentImage");
             if(href == undefined) {
