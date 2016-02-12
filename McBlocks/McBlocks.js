@@ -12,13 +12,10 @@ var McBlocks = (function () {
         });
     };
     McBlocks.createDom = function createDom(mcBlock) {
-        var blockDiv = $("<div/>").addClass("mainBlock").prop("id", mcBlock.id);
         var headerDiv = $("<div/>", {
             text: mcBlock.header
         }).addClass("mainBlockHeader");
-        blockDiv.append(headerDiv);
         var contentDiv = $("<div/>").addClass("blockContent");
-        blockDiv.append(contentDiv);
         var href = mcBlock.href;
         if(mcBlock.image != undefined) {
             var imageDiv = $("<img />", {
@@ -41,16 +38,17 @@ var McBlocks = (function () {
             dummyDiv.addClass("blockContentDummy");
             contentDiv.append(dummyDiv);
         }
+        var blockDiv = $("<div/>").addClass("mainBlock").prop("id", mcBlock.id);
+        blockDiv.append(headerDiv);
+        blockDiv.append(contentDiv);
         if(href != undefined) {
             blockDiv.click(function () {
                 document.location.href = href;
             });
         }
-        var color = mcBlock.color;
-        if(color != undefined) {
-            color = "#cccccc";
+        if(mcBlock.color != undefined) {
+            blockDiv.css("background-color", mcBlock.color);
         }
-        blockDiv.css("background-color", "gray");
         return blockDiv;
     };
     return McBlocks;

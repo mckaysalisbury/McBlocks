@@ -10,12 +10,13 @@ body{
     text-align: center;
 }
 
-/* this is the CSS adjusting content to my liking */
+/* this is the CSS adjusting individual content to my liking */
 
-#wp{
+#wp{ /* I gave an element an ID of "wp" */
     background-color: blueviolet;    
 }
 
-#mainBlockHeader {
+/* this overrides specific behavior for all headers */
+.mainBlockHeader {
     font-family: sans-serif;
 }

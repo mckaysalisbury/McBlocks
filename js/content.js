@@ -20,7 +20,7 @@ var content = [
     }, 
     {
         header: "text",
-        contentText: "This is the content. This is where you could make some text. Text that is so big isn't currently supported."
+        contentText: "This is the content. This is where you could make some text. Text that is so big it more than fills the entire block isn't currently supported."
     }
 ];
 McBlocks.Add("#start", content);
