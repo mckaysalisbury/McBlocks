@@ -1,0 +1,28 @@
+.mainBlock{
+    background-color: springgreen;
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    padding: 5px;
+    display: inline-block;
+    overflow: hidden;
+}
+.mainBlockHeader {
+    position: absolute;    
+    font-size: 12pt;
+    height:16pt;
+    font-weight: bold;
+    width:300px;    
+    overflow: hidden;
+}
+.blockContent{
+    margin: 25px;
+    overflow: hidden;
+}
+.blockContentDummy{
+    width:100%;
+}
+.blockContentImage{
+    max-height: 250px;
+    max-width: 250px;
+}
