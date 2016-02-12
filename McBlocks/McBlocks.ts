@@ -58,21 +58,21 @@ class McBlocks {
             contentDiv.append(dummyDiv);
         }
         
-        var blockDiv = $("<div/>").addClass("mainBlock").prop("id", mcBlock.id);        
-        blockDiv.append(headerDiv);
-        blockDiv.append(contentDiv);
-
-
+        var outerBlock = $("<div/>");
+        
         if (href != undefined) {
-            blockDiv.click(function() {
-                document.location.href = href;
-            });
+            outerBlock = $("<a/>", { href: href });
         }
         
+        outerBlock.addClass("mainBlock").prop("id", mcBlock.id);        
+        outerBlock.append(headerDiv);
+        outerBlock.append(contentDiv);
+
+        
         if (mcBlock.color != undefined) {
-            blockDiv.css("background-color", mcBlock.color);
+            outerBlock.css("background-color", mcBlock.color);
         }
-        return blockDiv;
+        return outerBlock;
     }
 }
 
