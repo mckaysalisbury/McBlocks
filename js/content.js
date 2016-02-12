@@ -5,7 +5,7 @@ var content = [
     }, 
     {
         header: "Wikipedia",
-        image: "https://en.wikipedia.org//static/images/project-logos/enwiki.png",
+        image: "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
         href: "https://en.wikipedia.org/",
         id: "wp"
     }, 

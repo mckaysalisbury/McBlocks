@@ -30,6 +30,7 @@ SOFTWARE.
     padding: 5px;
     display: inline-block;
     overflow: hidden;
+    color: black;
 }
 .mainBlockHeader {
     position: absolute;    
