@@ -31,6 +31,7 @@ SOFTWARE.
     display: inline-block;
     overflow: hidden;
     color: black;
+    vertical-align: middle;
 }
 .mainBlockHeader {
     position: absolute;    
@@ -40,9 +41,17 @@ SOFTWARE.
     width:300px;    
     overflow: hidden;
 }
+.mainBlockAligner{
+    height:100%;
+    width:0px;
+    display:inline-block;
+    vertical-align: middle;
+}
 .blockContent{
     margin: 25px;
     overflow: hidden;
+    display:inline-block;
+    vertical-align: middle;
 }
 .blockContentDummy{
     width:100%;

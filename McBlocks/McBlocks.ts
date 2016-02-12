@@ -39,6 +39,7 @@ class McBlocks {
     private static createDom(mcBlock: IMcBlock): JQuery {
         var headerDiv = $("<div/>", { text: mcBlock.header }).addClass("mainBlockHeader");
         var contentDiv = $("<div/>").addClass("blockContent");
+        var alignerDiv = $("<div/>").addClass("mainBlockAligner");
         
         var href = mcBlock.href;
         if (mcBlock.image != undefined) {
@@ -67,8 +68,8 @@ class McBlocks {
         
         outerBlock.addClass("mainBlock").prop("id", mcBlock.id);        
         outerBlock.append(headerDiv);
+        outerBlock.append(alignerDiv);
         outerBlock.append(contentDiv);
-
         
         if (mcBlock.color != undefined) {
             outerBlock.css("background-color", mcBlock.color);
