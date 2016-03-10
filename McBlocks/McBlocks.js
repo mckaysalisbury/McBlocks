@@ -40,7 +40,7 @@ var McBlocks = (function () {
         var contentDiv = $("<div/>").addClass("blockContent");
         var alignerDiv = $("<div/>").addClass("mainBlockAligner");
         var href = mcBlock.href;
-        if(mcBlock.image != undefined) {
+        if(mcBlock.image !== undefined) {
             var imageDiv = $("<img />", {
                 src: mcBlock.image,
                 alt: mcBlock.alt
@@ -50,7 +50,7 @@ var McBlocks = (function () {
                 href = mcBlock.image;
             }
             contentDiv.append(imageDiv);
-        } else if(mcBlock.contentText != undefined) {
+        } else if(mcBlock.contentText !== undefined) {
             var textDiv = $("<p/>", {
                 text: mcBlock.contentText
             }).addClass("blockContentText");
@@ -63,7 +63,7 @@ var McBlocks = (function () {
             contentDiv.append(dummyDiv);
         }
         var outerBlock = $("<div/>");
-        if(href != undefined) {
+        if(href !== undefined) {
             outerBlock = $("<a/>", {
                 href: href
             });
@@ -72,7 +72,7 @@ var McBlocks = (function () {
         outerBlock.append(headerDiv);
         outerBlock.append(alignerDiv);
         outerBlock.append(contentDiv);
-        if(mcBlock.color != undefined) {
+        if(mcBlock.color !== undefined) {
             outerBlock.css("background-color", mcBlock.color);
         }
         return outerBlock;

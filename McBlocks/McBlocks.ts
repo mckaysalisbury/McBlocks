@@ -56,7 +56,7 @@ class McBlocks {
         var alignerDiv = $("<div/>").addClass("mainBlockAligner");
         
         var href = mcBlock.href;
-        if (mcBlock.image != undefined) {
+        if (mcBlock.image !== undefined) {
             var imageDiv = $("<img />", { src: mcBlock.image, alt: mcBlock.alt });
             imageDiv.addClass("blockContentImage");
             if (href == undefined) {
@@ -64,7 +64,7 @@ class McBlocks {
             }
             contentDiv.append(imageDiv);
         }
-        else if (mcBlock.contentText != undefined) {
+        else if (mcBlock.contentText !== undefined) {
             var textDiv = $("<p/>", { text: mcBlock.contentText }).addClass("blockContentText")
             contentDiv.append(textDiv);
         }
@@ -76,7 +76,7 @@ class McBlocks {
         
         var outerBlock = $("<div/>");
         
-        if (href != undefined) {
+        if (href !== undefined) {
             outerBlock = $("<a/>", { href: href });
         }
         
@@ -85,7 +85,7 @@ class McBlocks {
         outerBlock.append(alignerDiv);
         outerBlock.append(contentDiv);
         
-        if (mcBlock.color != undefined) {
+        if (mcBlock.color !== undefined) {
             outerBlock.css("background-color", mcBlock.color);
         }
         return outerBlock;
