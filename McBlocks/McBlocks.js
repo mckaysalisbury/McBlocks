@@ -76,7 +76,8 @@ var McBlocks = /** @class */ (function () {
         }
         var outerBlock = document.createElement('div');
         if (href !== undefined) {
-            // outerBlock = $("<a/>", { href: href });
+            outerBlock = document.createElement('a');
+            outerBlock.href = href;
         }
         outerBlock.className = "mainBlock";
         outerBlock.id = mcBlock.id;

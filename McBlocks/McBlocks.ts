@@ -91,10 +91,11 @@ class McBlocks {
             contentDiv.append(dummyDiv);
         }
         
-        var outerBlock = document.createElement('div');
+        var outerBlock : HTMLDivElement | HTMLAnchorElement = document.createElement('div');
         
         if (href !== undefined) {
-            // outerBlock = $("<a/>", { href: href });
+            outerBlock = document.createElement('a');
+            outerBlock.href = href;
         }
         
         outerBlock.className = "mainBlock";
