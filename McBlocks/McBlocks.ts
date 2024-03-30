@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-///<reference path="../jquery/jquery.d.ts" />
-
 interface IMcBlock {
     id? : string;
     header: string;
@@ -34,59 +32,79 @@ interface IMcBlock {
 
 class McBlocks {
     
-    // Use this method    
-    static Add(jquerySelector: string, content: IMcBlock[]) {
-        $(document).ready(function() {
-            content.map(McBlocks.addFunc(jquerySelector));
+    // Use this method
+    static Add(id: string, content: IMcBlock[]) {
+        this.simpleReady(() => {
+            content.map(McBlocks.addFunc(id));
         });
     }
     
     // Private methods
 
-    private static addFunc(selector: string) {
-        var selected = $(selector);
+    private static simpleReady(func : () => void) {
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            func()
+        } else {
+            document.addEventListener("DOMContentLoaded", func);
+        }
+    }
+
+    private static addFunc(id: string) : (mcBlock: IMcBlock) => void {
+        var element = document.getElementById(id);
         return function(mcBlock: IMcBlock) {
-            selected.append(McBlocks.createDom(mcBlock));
+            element.append(McBlocks.createDom(mcBlock));
         };
     }
 
-    private static createDom(mcBlock: IMcBlock): JQuery {
-        var headerDiv = $("<div/>", { text: mcBlock.header }).addClass("mainBlockHeader");
-        var contentDiv = $("<div/>").addClass("blockContent");
-        var alignerDiv = $("<div/>").addClass("mainBlockAligner");
+    private static createDom(mcBlock: IMcBlock): HTMLElement {
+        var headerDiv = document.createElement('div');
+        headerDiv.innerText = mcBlock.header;
+        headerDiv.className = 'mainBlockHeader';
+
+        var contentDiv = document.createElement('div');
+        contentDiv.className = 'blockContent';
+
+        var alignerDiv = document.createElement('div');
+        alignerDiv.className = 'mainBlockAligner';
         
         var href = mcBlock.href;
         if (mcBlock.image !== undefined) {
-            var imageDiv = $("<img />", { src: mcBlock.image, alt: mcBlock.alt });
-            imageDiv.addClass("blockContentImage");
+            var imageDiv = document.createElement('img');
+            imageDiv.src = mcBlock.image;
+            imageDiv.alt = mcBlock.alt;
+            imageDiv.className = 'blockContentImage';
             if (href == undefined) {
                 href = mcBlock.image;
             }
             contentDiv.append(imageDiv);
         }
         else if (mcBlock.contentText !== undefined) {
-            var textDiv = $("<p/>", { text: mcBlock.contentText }).addClass("blockContentText")
+            var textDiv = document.createElement('p');
+            textDiv.textContent = mcBlock.contentText;
+            textDiv.className = 'blockContentText';
             contentDiv.append(textDiv);
         }
         else {
-            var dummyDiv = $("<img />", { src: 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==' });
-            dummyDiv.addClass("blockContentDummy");
+            var dummyDiv = document.createElement('img');
+            dummyDiv.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+            dummyDiv.className = "blockContentDummy";
             contentDiv.append(dummyDiv);
         }
         
-        var outerBlock = $("<div/>");
+        var outerBlock = document.createElement('div');
         
         if (href !== undefined) {
-            outerBlock = $("<a/>", { href: href });
+            // outerBlock = $("<a/>", { href: href });
         }
         
-        outerBlock.addClass("mainBlock").prop("id", mcBlock.id);        
+        outerBlock.className = "mainBlock";
+        outerBlock.id = mcBlock.id;
         outerBlock.append(headerDiv);
         outerBlock.append(alignerDiv);
         outerBlock.append(contentDiv);
         
         if (mcBlock.color !== undefined) {
-            outerBlock.css("background-color", mcBlock.color);
+            outerBlock.style.backgroundColor = mcBlock.color;
         }
         return outerBlock;
     }

@@ -13,7 +13,7 @@ body{
 /* this is the CSS adjusting individual content to my liking */
 
 #wp{ /* I gave an element an ID of "wp" */
-    background-color: blueviolet;    
+    background-color: blueviolet;
 }
 
 /* this overrides specific behavior for all headers */

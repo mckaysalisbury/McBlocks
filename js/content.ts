@@ -7,4 +7,4 @@ var content : IMcBlock[] = [
     { header: "This is a long message. So long that it doesn't fit", color: "#ff0000" },
     { header: "text", contentText: "This is the content. This is where you could make some text. Text that is so big it more than fills the entire block isn't currently supported." }
 ];
-McBlocks.Add("#start", content);
+McBlocks.Add("start", content);
