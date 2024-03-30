@@ -1,5 +1,5 @@
 { "compilerOptions": {
-    "target": "es5",
-    "module": "amd",
-    "sourceMap": true    
+    "target": "es2020",
+    "module": "CommonJS",
+    "sourceMap": true
 }}

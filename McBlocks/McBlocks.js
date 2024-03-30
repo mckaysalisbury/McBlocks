@@ -19,31 +19,29 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var McBlocks = /** @class */ (function () {
-    function McBlocks() {
-    }
+class McBlocks {
     // Use this method
-    McBlocks.Add = function (id, content) {
-        this.simpleReady(function () {
+    static Add(id, content) {
+        this.simpleReady(() => {
             content.map(McBlocks.addFunc(id));
         });
-    };
+    }
     // Private methods
-    McBlocks.simpleReady = function (func) {
+    static simpleReady(func) {
         if (document.readyState === "complete" || document.readyState === "interactive") {
             func();
         }
         else {
             document.addEventListener("DOMContentLoaded", func);
         }
-    };
-    McBlocks.addFunc = function (id) {
+    }
+    static addFunc(id) {
         var element = document.getElementById(id);
         return function (mcBlock) {
             element.append(McBlocks.createDom(mcBlock));
         };
-    };
-    McBlocks.createDom = function (mcBlock) {
+    }
+    static createDom(mcBlock) {
         var headerDiv = document.createElement('div');
         headerDiv.innerText = mcBlock.header;
         headerDiv.className = 'mainBlockHeader';
@@ -88,7 +86,6 @@ var McBlocks = /** @class */ (function () {
             outerBlock.style.backgroundColor = mcBlock.color;
         }
         return outerBlock;
-    };
-    return McBlocks;
-}());
+    }
+}
 //# sourceMappingURL=McBlocks.js.map
