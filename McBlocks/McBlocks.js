@@ -54,6 +54,7 @@ class McBlocks {
             var imageDiv = document.createElement('img');
             imageDiv.src = mcBlock.image;
             imageDiv.alt = mcBlock.alt;
+            imageDiv.loading = "lazy";
             imageDiv.className = 'blockContentImage';
             if (href == undefined) {
                 href = mcBlock.image;
